@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="mr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>सोडून देणे.. just let go.. write off..</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            marathi: ['"IBM Plex Sans Devanagari"', '"IBM Plex Sans"', 'sans-serif'],
+            sans: ['"IBM Plex Sans"', '"IBM Plex Sans Devanagari"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devanagari:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Devanagari', 'IBM Plex Sans', sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Strict rules to prevent broken Marathi words and ensure clean justification */
+    .marathi-content {
+      text-align: justify;
+      text-justify: inter-word;
+      word-break: keep-all;
+      hyphens: none;
+      -webkit-hyphens: none;
+      overflow-wrap: break-word;
+      line-height: 1.95;
+      letter-spacing: 0.012em;
+    }
+
+    @media (max-width: 640px) {
+      .marathi-content {
+        line-height: 1.88;
+        letter-spacing: 0.008em;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-stone-50 text-stone-800 dark:bg-[#121417] dark:text-stone-200 transition-colors duration-300 min-h-screen py-6 sm:py-14 px-4 sm:px-8 flex flex-col items-center">
+
+  <div class="fixed top-5 right-5 z-50 flex items-center gap-2.5 backdrop-blur-md bg-white/80 dark:bg-stone-900/80 p-1.5 rounded-full shadow-lg border border-stone-200/80 dark:border-stone-800/80 transition-all duration-300">
+    <!-- Theme Toggle -->
+    <button id="themeToggle" type="button" aria-label="Toggle Theme" class="p-2.5 rounded-full text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors focus:outline-none">
+      <!-- Sun Icon (visible in dark mode) -->
+      <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+      <!-- Moon Icon (visible in light mode) -->
+      <svg id="moonIcon" class="w-5 h-5 block dark:hidden text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+      </svg>
+    </button>
+
+    <!-- Share / Copy Link Button -->
+    <button id="shareBtn" type="button" aria-label="Share" class="p-2.5 rounded-full text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors focus:outline-none relative">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 z-50 transform translate-y-16 opacity-0 transition-all duration-300 px-5 py-2.5 rounded-full bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900 text-sm font-medium shadow-xl pointer-events-none">
+    लिंक कॉपी झाली!
+  </div>
+
+  <main class="w-full max-w-2xl sm:max-w-3xl bg-white dark:bg-[#181a1f] p-6 sm:p-12 md:p-14 rounded-2xl sm:rounded-3xl shadow-sm border border-stone-200/70 dark:border-stone-800/80 transition-colors duration-300">
+    
+    <!-- Title -->
+    <header class="mb-8">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-stone-900 dark:text-stone-100 leading-snug sm:leading-tight">
+        सोडून देणे.. just let go.. write off..
+      </h1>
+
+      <!-- Opening Subtitle Statement -->
+      <div class="mt-6 pl-4 border-l-4 border-amber-600/70 dark:border-amber-500/70 py-1">
+        <p class="text-base sm:text-lg font-medium text-stone-700 dark:text-stone-300 italic marathi-content">
+          काही बुडीत भावनिक कर्ज खाती अक्षरशः सोडून देऊन, let-go करून त्या कर्जदारांना मनातून ‘राईट-ऑफ’च करावे लागते..
+        </p>
+      </div>
+    </header>
+
+    <div class="my-8 sm:my-10 rounded-2xl overflow-hidden bg-gradient-to-b from-amber-50/60 via-stone-50/30 to-transparent dark:from-stone-800/40 dark:via-stone-800/10 dark:to-transparent border border-stone-200/50 dark:border-stone-800/60 p-4 sm:p-6 flex items-center justify-center">
+      <svg viewBox="0 0 760 300" class="w-full h-auto max-h-72 select-none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="balanceBeamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#d97706" />
+            <stop offset="100%" stop-color="#b45309" />
+          </linearGradient>
+          <linearGradient id="paperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fef3c7" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#fed7aa" stop-opacity="0.4" />
+          </linearGradient>
+          <linearGradient id="darkPaperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#3b332b" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#23211f" stop-opacity="0.5" />
+          </linearGradient>
+          <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+
+        <!-- Subtle Ambient Glow -->
+        <circle cx="560" cy="110" r="90" fill="#f59e0b" fill-opacity="0.08" class="dark:opacity-20" filter="url(#softGlow)" />
+        <circle cx="200" cy="160" r="80" fill="#78716c" fill-opacity="0.05" class="dark:opacity-10" />
+
+        <!-- Heavy Ledger/Bank balance scale base on left -->
+        <g class="transition-all duration-300">
+          <!-- Scale Pedestal -->
+          <path d="M 230 250 L 250 250 L 244 140 L 236 140 Z" fill="currentColor" class="text-stone-400 dark:text-stone-600" />
+          <ellipse cx="240" cy="250" rx="35" ry="6" fill="currentColor" class="text-stone-400 dark:text-stone-600" />
+          <circle cx="240" cy="136" r="6" fill="#d97706" />
+
+          <!-- Beam gently tilted (releasing weight) -->
+          <line x1="140" y1="125" x2="330" y2="150" stroke="currentColor" class="text-stone-500 dark:text-stone-500" stroke-width="4" stroke-linecap="round" />
+
+          <!-- Left Heavy Emotional Ledger Pan -->
+          <line x1="150" y1="126" x2="130" y2="180" stroke="currentColor" class="text-stone-400 dark:text-stone-600" stroke-width="1.5" />
+          <line x1="150" y1="126" x2="175" y2="180" stroke="currentColor" class="text-stone-400 dark:text-stone-600" stroke-width="1.5" />
+          <path d="M 120 180 Q 152 195 185 180 Z" fill="none" stroke="currentColor" class="text-stone-500 dark:text-stone-500" stroke-width="2" />
+          
+          <!-- Stack of Debt Ledger Pages / Coins dissolving -->
+          <rect x="135" y="165" width="34" height="6" rx="2" fill="#b45309" fill-opacity="0.75" />
+          <rect x="132" y="157" width="40" height="6" rx="2" fill="#d97706" fill-opacity="0.8" />
+          <rect x="138" y="149" width="28" height="6" rx="2" fill="#f59e0b" fill-opacity="0.85" />
+        </g>
+
+        <!-- Right Pan (Rising & Light, Transforming into Flight) -->
+        <g class="transition-all duration-300">
+          <line x1="320" y1="149" x2="305" y2="192" stroke="currentColor" class="text-stone-400 dark:text-stone-600" stroke-width="1.5" stroke-dasharray="3 3" />
+          <line x1="320" y1="149" x2="340" y2="192" stroke="currentColor" class="text-stone-400 dark:text-stone-600" stroke-width="1.5" stroke-dasharray="3 3" />
+          <path d="M 295 192 Q 322 202 350 192" fill="none" stroke="currentColor" class="text-amber-600/60 dark:text-amber-500/60" stroke-width="2" />
+        </g>
+
+        <!-- Floating, Detaching Ledger Pages and Emotional Weights floating away -->
+        <g class="transition-all duration-500">
+          <!-- Dispersing leaves/receipts rising -->
+          <g transform="translate(345, 140) rotate(-20)">
+            <rect width="18" height="12" rx="1.5" fill="#f59e0b" fill-opacity="0.4" stroke="#d97706" stroke-width="1" />
+            <line x1="3" y1="4" x2="15" y2="4" stroke="#d97706" stroke-width="0.8" opacity="0.6" />
+            <line x1="3" y1="8" x2="11" y2="8" stroke="#d97706" stroke-width="0.8" opacity="0.6" />
+          </g>
+          
+          <g transform="translate(385, 110) rotate(-35)">
+            <rect width="15" height="10" rx="1" fill="#f59e0b" fill-opacity="0.3" stroke="#d97706" stroke-width="0.8" />
+            <line x1="2" y1="3" x2="13" y2="3" stroke="#d97706" stroke-width="0.6" opacity="0.5" />
+          </g>
+
+          <g transform="translate(425, 80) rotate(-48)">
+            <rect width="12" height="8" rx="1" fill="#f59e0b" fill-opacity="0.2" stroke="#d97706" stroke-width="0.7" />
+          </g>
+        </g>
+
+        <!-- Swarm of Birds emerging freely from the dissolving ledger sheets -->
+        <!-- Bird 1 (Small transformation) -->
+        <path d="M 440 95 Q 447 88 454 93 Q 461 88 468 95 Q 461 98 454 95 Q 447 98 440 95 Z" fill="#d97706" opacity="0.75" />
+        
+        <!-- Bird 2 -->
+        <path d="M 480 75 Q 490 66 500 72 Q 510 66 520 75 Q 510 79 500 75 Q 490 79 480 75 Z" fill="#d97706" opacity="0.85" />
+        
+        <!-- Bird 3 (Prominent Leader soaring high) -->
+        <path d="M 535 52 Q 548 40 562 48 Q 576 40 588 52 Q 576 57 562 52 Q 548 57 535 52 Z" fill="#b45309" class="dark:fill-amber-400" />
+        
+        <!-- Bird 4 -->
+        <path d="M 595 35 Q 606 25 618 31 Q 629 25 640 35 Q 629 39 618 35 Q 606 39 595 35 Z" fill="#d97706" opacity="0.9" class="dark:fill-amber-300" />
+
+        <!-- Bird 5 (Distant) -->
+        <path d="M 655 22 Q 662 14 670 18 Q 678 14 685 22 Q 678 25 670 22 Q 662 25 655 22 Z" fill="#f59e0b" opacity="0.7" />
+
+        <!-- Bird 6 (High in sky) -->
+        <path d="M 700 12 Q 706 6 712 9 Q 718 6 724 12 Q 718 14 712 12 Q 706 14 700 12 Z" fill="#f59e0b" opacity="0.5" />
+
+        <!-- Light particle trail denoting release & peace -->
+        <circle cx="360" cy="160" r="2.5" fill="#f59e0b" opacity="0.4" />
+        <circle cx="410" cy="130" r="2" fill="#f59e0b" opacity="0.5" />
+        <circle cx="470" cy="110" r="2.5" fill="#f59e0b" opacity="0.6" />
+        <circle cx="530" cy="85" r="1.5" fill="#f59e0b" opacity="0.5" />
+        <circle cx="610" cy="55" r="2" fill="#f59e0b" opacity="0.4" />
+      </svg>
+    </div>
+
+    <article class="space-y-6 text-stone-700 dark:text-stone-300 text-base sm:text-lg marathi-content">
+      
+      <p>
+        बँक म्हणले की आपल्या डोळ्यासमोर येतो तो पैसा, बचत आणि कर्जे. प्रत्येक बँकेकडे स्वतःची मूळ गंगाजळी असते आणि त्याशिवाय बँकेत येणारा पैशाचा मुख्य स्रोत असतो तो म्हणजे लोकांची बचत. आपल्याला हे ठाऊक आहे की पैसा नुसता बँकेत पडून राहून त्याचा काही उपयोग नसतो. तो व्यवहारात फिरता, खेळता राहणे आवश्यक असते. म्हणजे बँकेत जमा असलेल्या लोकांच्या बचतीच्या बळावर व्यापारउदिमासाठी कर्जे दिली जाणे, त्यातून आर्थिक उलाढाल व वृद्धी होऊन नियमित कर्जफेड येत राहणे; बँकेला नफा मिळणे, त्यातून शेअरहोल्डर्सना लाभांश व बचतीवर व्याज मिळून त्यातही वाढ होऊन त्याची पुनर्गुंतवणूक होणे. हे सगळे अर्थव्यवस्थेच्या आणि एकंदरीत देशाच्या प्रगतीच्या दृष्टीने पोषक असते.
+      </p>
+
+      <p>
+        पण बँकेची सर्वच कर्ज-खाती काही ‘सुदृढ’ नसतात. काही कर्जदार वेगवेगळ्या अडीअडचणींमुळे वेळेवर हप्ते भरत नाहीत अथवा भरू शकत नाहीत; काही मुद्दाम भरत नाहीत आणि काही ‘नग’ बँकेला जाणूनबुजून ‘चुना’ लावण्यासाठीच कर्जे घेत असतात. बँक एखाद्याला कर्ज देते तेव्हां त्यातला कोण कसा आहे याची अचूक पडताळणी करणे शक्य नसते. जे ‘दिसते’ आणि कागदपत्रांवरून ‘जाणवते’ त्याच्या आधारावर कर्ज दिले जाते. मग जेव्हां दुर्दैवाने एखादे कर्ज थकते/बुडीत होते तेव्हां त्याचा भार बँकेच्या ‘क्रेडिट बॅलन्स’ वर येतो आणि बोजा मूळ गंगाजळीवर.
+      </p>
+
+      <p>
+        अशी थकीत/बुडीत कर्ज खाती खतावणीवर तशीच पुढे ओढत राहणे बँक आणि तिचे ठेवीदार या दोहोंसाठी क्लेशदायक असते. प्रत्येक बँक आपापल्या कुवतीनुसार कर्जफेड करून घ्यायचा प्रयत्न करत असते पण तरीही बँकेच्या नफ्याला ‘खार’ लावत काही कर्जे बुडीत खाती जातातच. नाईलाज असतो.
+      </p>
+
+      <p>
+        काय करते मग बँक त्याचे? हे होणार असे गृहीत धरून त्याचा भार सोसण्यासाठी बँक दरवर्षी नफ्यातून काही रक्कम बाजूस काढते (provisioning). याशिवाय एखाद्या वेळेस मोठ्ठा तोटा देखील ‘दैवाच्या अवकृपेने’ (force majeure – act of god) सोसावा लागू शकतो. यासाठी बँक तिच्या सगळ्या व्यवसायाचा विमा देखील उतरवत असते. या बाजूला काढलेल्या निधीतून आणि वेळप्रसंगी नफ्यातून अशी बुडीत कर्जे खतावणीतून चक्क पुसून टाकली जातात. हे असे write-off करणे आवश्यक असते &gt; जरी फसवणूक, अन्याय झाला असला तरी in the long term बँकेच्या व्यवसायाचे स्वास्थ्य टिकून राहावे आणि बचत-ठेवी व गंगाजळीला गळती लागून बँकच बुडू नये म्हणून!
+      </p>
+
+      <!-- Asterisk Section Separator -->
+      <div class="py-4 flex items-center justify-center gap-3 select-none text-stone-400 dark:text-stone-500">
+        <span class="w-10 h-px bg-stone-200 dark:bg-stone-800"></span>
+        <span class="text-xl tracking-widest">✱✱✱</span>
+        <span class="w-10 h-px bg-stone-200 dark:bg-stone-800"></span>
+      </div>
+
+      <p>
+        आपल्यातल्या प्रत्येकाचे मन हे ज्याच्या त्याच्या आठवणी, अनुभव आणि भाव-भावनांचे संचित असते. गंगाजळी. जणू बँकेत असलेला पैसा.
+      </p>
+
+      <p>
+        नित्य व्यवहारात आपला आजूबाजूच्या वस्तू, प्राणी आणि व्यक्ती यांच्याशी संबंध येत राहणे स्वाभाविक आहे. त्यांच्याशी होणारी आपली व्यावहारिक, भावनिक देवाण-घेवाण हा एक ‘मनोव्यापार’ म्हणजे भावनिक उलाढालच आहे. या ‘व्यापारा’त आपले मैत्र, आप्तस्वकीय, समाज, सजीव-निर्जीव आणि निसर्ग यांच्याकडून मिळणारा स्नेह, आपुलकी व ऊर्जा म्हणजे आपल्या मनो-बँकेत असलेल्या बचत-ठेवी आणि यांच्यातील कोणासाठी आपण जाणता अजाणता काही केले असेल तर ती म्हणजे आपल्या मनाच्या ताळेबंदावर ‘येणे’ बाजूला असलेली कर्ज-खाती!
+      </p>
+
+      <p>
+        आपल्याशी कोणी चुकीच्या पद्धतीने वागते, फसवणूक करते, शारीरिक-मानसिक इजा पोचवते, शिवीगाळ करते तेव्हां अर्थातच आपल्याला त्याचे दुखः होते, वाईट वाटते. झाला प्रकार/घटना प्रदीर्घ काळापर्यंत आपल्या मनात घर करून राहते, मन पोखरते. हे म्हणजे आपल्या मनोव्यापाराच्या बॅलन्स शीटवर असलेल्या काही ‘नग’ कर्जदारांनी त्यांचे देय हप्ते थकवणे किंवा चक्क बुडवणे आणि अशी बुडीत भावनिक कर्जे आपण मनाच्या खतावणीवर पुढे ओढत राहणे.
+      </p>
+
+      <p>
+        यावर उपाय म्हणून बँक ज्याप्रमाणे possible contingencies and liabilities साठी तरतूद (provisions) करत असते तद्वत; निकोप सवयींमधे नियमितता ठेवणे, मानसिक स्वास्थ्य राखण्यासाठी ध्यानधारणेची नित्य साधना करत राहणे हिताचे असते. मैत्र, आप्तस्वकीय, समाज तसेच आजूबाजूचे सर्व सजीव-निर्जीव आणि निसर्गाप्रति सदोदित कृतज्ञता बाळगणे म्हणजे तर आत्यंतिक गरजेच्या वेळेस कामी यावी म्हणून घेतलेल्या विमा पॉलिसीचे हप्ते!
+      </p>
+
+      <p>
+        आपल्यावर झालेल्या अन्यायाबद्दल वाईट वाटणे, तो करणाऱ्याबद्दल घृणा/द्वेष वाटणे पूर्णतः नैसर्गिक असले तरीही अंतिमतः ते draining म्हणजे मनःस्वास्थ्याच्या संचिताला गळती लावणारे असते. ही गळती थांबवणे आपल्याच हिताचे असते; आवडो वा नावडो. म्हणून healthy habits ची ‘तरतूद’ व कृतज्ञततेचा ‘विमा’ उतरवला असला तरी काही बुडीत भावनिक कर्ज खाती अक्षरशः सोडून देऊन, let-go करून त्या कर्जदारांना मनातून ‘राईट-ऑफ’च करावे लागते; आपल्या स्वास्थ्याच्या बँकेचा ताळेबंद ‘सुदृढ’ राहून happiness चा नफा व आनंदाचा dividend कायम मिळत राहावा म्हणून!!
+      </p>
+
+    </article>
+
+  </main>
+
+  <script>
+    // Theme Switcher Logic
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+
+    function applyInitialTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        htmlElement.classList.add('dark');
+      } else {
+        htmlElement.classList.remove('dark');
+      }
+    }
+
+    applyInitialTheme();
+
+    themeToggle.addEventListener('click', () => {
+      if (htmlElement.classList.contains('dark')) {
+        htmlElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        htmlElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // Share & Copy Link Handling
+    const shareBtn = document.getElementById('shareBtn');
+    const toast = document.getElementById('toast');
+
+    function showToast(message) {
+      if (message) toast.textContent = message;
+      toast.classList.remove('translate-y-16', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-16', 'opacity-0');
+      }, 2500);
+    }
+
+    shareBtn.addEventListener('click', async () => {
+      const shareData = {
+        title: 'सोडून देणे.. just let go.. write off..',
+        text: 'काही बुडीत भावनिक कर्ज खाती अक्षरशः सोडून देऊन, let-go करून त्या कर्जदारांना मनातून ‘राईट-ऑफ’च करावे लागते..',
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          // Fallback to clipboard if sharing cancelled or rejected
+          copyToClipboard(window.location.href);
+        }
+      } else {
+        copyToClipboard(window.location.href);
+      }
+    });
+
+    function copyToClipboard(text) {
+      try {
+        const dummy = document.createElement('textarea');
+        dummy.value = text;
+        dummy.setAttribute('readonly', '');
+        dummy.style.position = 'absolute';
+        dummy.style.left = '-9999px';
+        document.body.appendChild(dummy);
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        showToast('लिंक कॉपी झाली!');
+      } catch (e) {
+        showToast('लिंक कॉपी करता आली नाही.');
+      }
+    }
+  </script>
+</body>
+</html>
